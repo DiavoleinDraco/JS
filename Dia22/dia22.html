@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Remover hijos (appendChild)</h1>
+    <ul>
+        <li>30DaysOfPython Challenge Done</li>
+        <li>30DaysOfJavaScript Challenge Done</li>
+        <li>30DaysOfReact Challenge Coming</li>
+        <li>30DaysOfFullStack Challenge Coming</li>
+        <li>30DaysOfDataAnalysis Challenge Coming</li>
+        <li>30DaysOfReactNative Challenge Coming</li>
+        <li>30DaysOfMachineLearning Challenge Coming</li>
+    </ul>
+    <script>
+        //Esto es para eliminar elementos creados
+        let ul = document.querySelector('ul')
+        /*let list = document.querySelectorAll('li')
+        for(const lists of list){
+           ul.removeChild(lists)
+        }*/
+        //Esto es otro metodo para eliminar los elementos
+        ul.innerHTML = ''
+        //Esto para crear elementos
+        let titulo 
+        for (let i = 0; i <3; i++) {
+           titulo = document.createElement('h1')
+            titulo.className = 'titulo'
+            titulo.style.fontSize = '27px'
+            titulo.textContent = i
+            //esto para anexarlo al documento
+            document.body.appendChild(titulo)        
+        }
+    </script>
+</body>
+</html>
