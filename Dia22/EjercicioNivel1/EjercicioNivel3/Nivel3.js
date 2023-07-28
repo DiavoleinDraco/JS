@@ -81,21 +81,28 @@ for (let i = 0; i < asabenehChallenges2020.challenges.length; i++) {
         const tagDivChildDetails = document.createElement('p')
         tagDivChildDetails.textContent = elemento
         tagDetails.appendChild(tagDivChildDetails)
-        tagDetails.style.display = 'block'
+        tagDetails.style.display = 'inline-block'
+        tagDetails.style.position = 'relative'
         tagDetails.style.paddingLeft = '50%'
+        tagDetails.style.height = 'auto'
+        Object.assign(tagDetails.style, {
+            display: 'inline-block',
+            position: 'relative',
+            paddingLeft: '45%'
+        })
     })
 
     tagPStatus.textContent = asabenehChallenges2020.challenges[i].status
 
     Object.assign(tagPStatus.style, {
         textAlign: 'center',
-        display: 'inline-block',
-        position: 'relative',
+        display: 'inline',
+        position: 'absolute',
         left: '80%',
         margin: '0px',
         padding: '0px',
         top: 'auto',
-        
+
     })
 
 
@@ -103,34 +110,43 @@ for (let i = 0; i < asabenehChallenges2020.challenges.length; i++) {
     tagA.target = '_blank'
     tagA.textContent = asabenehChallenges2020.challenges[i].name
     Object.assign(tagA.style, {
+        display: 'block',
         position: 'relative',
+        width: '250px',
         top: '10px'
     })
-  
-    if(tagPStatus.textContent == 'Done'){
+
+    if (tagPStatus.textContent == 'Done') {
         tagDivChild.style.backgroundColor = 'green'
-    }else if(tagPStatus.textContent == 'Ongoing'){
+    } else if (tagPStatus.textContent == 'Ongoing') {
         tagDivChild.style.backgroundColor = 'yellow'
-    }else{
+    } else {
         tagDivChild.style.backgroundColor = 'red'
     }
 
 
     //* Atributos tagDivChild
     Object.assign(tagDivChild.style, {
+
+        position: 'relative',
         textAlign: 'left',
         marginBottom: '5px',
         padding: '20px 0',
         height: 'auto',
         alignItems: 'center',
-      
+        width: '900px',
+        left: 'auto'
+
+
     })
 
     //* Atributos tagDivContainer
     Object.assign(tagDivContainer.style, {
         position: 'relative',
         top: '20px',
-        alignItems: 'center'
+      
+        margin: '0 auto',
+        maxWidth: '900px'
     })
 
 
@@ -147,13 +163,180 @@ tagDiv.appendChild(tagDivContainer);
 //! PARTE 3 
 const tagH2 = document.createElement('h2')
 const tagDivIcons = document.createElement('div')
-tagH2.textContent =  asabenehChallenges2020.author.firstName + ' ' + asabenehChallenges2020.author.lastName
-tagDiv.appendChild(tagH2)
+const tagPDescripcion = document.createElement('p')
+const tagDivTtitlesSkills = document.createElement('div')
+const tagDivTitles = document.createElement('div')
+const tagDivSkills = document.createElement('div')
+const tagDivQualifi = document.createElement('div')
 
-   asabenehChallenges2020.author.socialLinks.forEach(elemento => {
+
+tagDivTtitlesSkills.style.Width = '100%'
+//texto de asabeneh yetahen
+tagH2.textContent = asabenehChallenges2020.author.firstName + ' ' + asabenehChallenges2020.author.lastName
+tagH2.style.paddingTop = '20px'
+
+
+// Iconons 
+asabenehChallenges2020.author.socialLinks.forEach(elemento => {
     tagDivIcons.innerHTML += elemento.fontawesomeIcon
-    tagDivIcons.style.fontSize = '100px'
-   })
-   
+    tagDivIcons.style.fontSize = '60px'
+})
 
+//Primer parrafo con la info del yeta
+tagPDescripcion.textContent = 'I am an educator, developer, motivator and content creator. I am a life-long learner. If you like to know more about me checkout my Linkedin or Github profile. Thank you so much for joining in my quest of changing everyone to developer'
+Object.assign(tagPDescripcion.style, {
+    width: '700px',
+    display: 'inline-block'
+})
+
+// Creacion de titles y añadir su contenido
+const tagTitiless = document.createElement('p')
+tagTitiless.textContent = 'Titles'
+
+tagDivTitles.appendChild(tagTitiless)
+
+asabenehChallenges2020.author.titles.forEach(elemento => {
+    const tagTitiles = document.createElement('p')
+
+    tagTitiles.style.display = 'inline-block'
+    tagTitiles.textContent = elemento[0].concat(elemento[1])
+    Object.assign(tagTitiles.style,{
+        display: 'inline-block',
+        margin: '0px',
+        paddingBottom: '6px'
+    })
+
+    tagDivTitles.appendChild(tagTitiles)
+})
+
+// Creacion de skills y añadir su contenido
+const tagSkillsitas = document.createElement('p')
+tagSkillsitas.textContent = 'Skills'
+
+tagDivSkills.appendChild(tagSkillsitas)
+
+
+asabenehChallenges2020.author.skills.forEach(elemento => {
+    const tagSkills = document.createElement('p')
+
+    tagSkills.style.display = 'inline-block'
+    tagSkills.textContent = '✅' + elemento
+    Object.assign(tagSkills.style,{
+        display: 'inline-block',
+        margin: '0px',
+        paddingBottom: '6px'
+    })
+
+    tagDivSkills.appendChild(tagSkills)
+})
+
+
+// Creacion de quali y añadir su contenido
+const tagQualis = document.createElement('p')
+tagQualis.textContent = 'Qualifications'
+
+tagDivQualifi.appendChild(tagQualis)
+
+
+const tagQual1 = document.createElement('p')
+
+
+Object.assign(tagQual1.style,{
+    display: 'inline-block',
+    margin: '0px',
+    paddingBottom: '6px'
+})
+tagQual1.textContent = '📖' + asabenehChallenges2020.author.qualifications[0]
+tagDivQualifi.appendChild(tagQual1)
+for (i = 1; i < 4; i++) {
+    const tagQual = document.createElement('p')
+    tagQual.textContent = '👨🏾‍🎓' + asabenehChallenges2020.author.qualifications[i]
+    Object.assign(tagQual.style,{
+        display: 'inline-block',
+        margin: '0px',
+        paddingBottom: '6px'
+    })
+
+    tagDivQualifi.appendChild(tagQual)
+}
+
+
+
+// Estilo de los divs contenedores de los 3 anteriores
+Object.assign(tagDivQualifi.style, {
+    textAlign: 'left',
+    display: 'inline-block',
+    margin: '0 auto',
+    maxWidth: '200px'
+    
+})
+
+
+
+
+
+Object.assign(tagDivSkills.style, {
+    textAlign: 'left',
+    display: 'inline-block',
+    margin: '0 auto',
+    maxWidth: '200px'
+})
+
+Object.assign(tagDivTitles.style, {
+    textAlign: 'left',
+    display: 'inline-block',
+    margin: '0 auto',
+    maxWidth: '150px'
+})
+
+
+//apendizar todo 
+
+tagDivTtitlesSkills.appendChild(tagDivTitles)
+tagDivTtitlesSkills.appendChild(tagDivSkills)
+tagDivTtitlesSkills.appendChild(tagDivQualifi)
+tagDiv.appendChild(tagH2)
 tagDiv.appendChild(tagDivIcons)
+tagDiv.appendChild(tagPDescripcion)
+tagDiv.appendChild(tagDivTtitlesSkills)
+
+//darle paddin a los iconos 
+const tagI = document.querySelectorAll('i')
+tagI.forEach(elemento => elemento.style.padding = '10px')
+
+
+//!parte 4, las keywords
+
+const divKeywords = document.createElement('div')
+Object.assign(divKeywords.style,{
+   
+    position: 'relative',
+        top: '20px',
+      
+        margin: '0 auto',
+        maxWidth: '900px'
+    
+    
+})
+
+asabenehChallenges2020.keywords.forEach(elementos => {
+    const tagPKeyWords = document.createElement('p')
+    tagPKeyWords.textContent = '# ' + elementos 
+    divKeywords.appendChild(tagPKeyWords)
+    Object.assign(tagPKeyWords.style,{
+        
+        position: 'relative',
+        border: 'hidden',
+        borderRadius: '10px',
+        backgroundColor: cambioColor(),
+        margin: '8px',
+        width:'auto',
+        display: 'inline-block'
+    })
+    
+})
+
+
+
+
+tagDiv.appendChild(divKeywords)
