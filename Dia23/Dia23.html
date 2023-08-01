@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="Dia23.js"></script>
+    <title>Dia 23</title>
+</head>
+<body>
+   <!--  ONCLICK
+    <button>Clickeame papu</button>
+
+   
+    <script>
+        const button = document.querySelector('button')
+        button.addEventListener('click',e => {
+            console.log('e es el objeto de escucha de eventos', e)
+            console.log('e.target da el elemento seleccionado', e.target)
+            console.log(
+                'e.target.textConten muestra el contenido del elemento seleccionado',
+                e.target.textContent
+            )
+        })
+    </script>
+   
+    <button onclick="clickMe()">Cliqueame a mi tambien papu</button>
+    <script>
+        const clickMe = () => {
+            alert('Podemos adjuntar un evento en un elemento html')
+        }
+    </script>
+        -->
+
+    <!--DOBLE CLICK
+
+    <button>Clieaquedme furro</button>
+        <script>
+            const button = document.querySelector('button')
+            button.addEventListener('dblclick', e => {
+                console.log('e muestra el objeto del listener', e)
+                console.log('e.target muestra el elemento seleccionado',e.target)
+                console.log(
+                    'e.target.textcontent muestra el contenido del elemento seleccionado',
+                    e.target.textContent 
+                )
+                })
+            
+        </script>
+--> 
+    <input type="text" id="masa" placeholder="Ingresa la masa">
+    <input type="text" id="altura" placeholder="Ingresa tu altura en metros">
+    <button style=" display: block;margin-top:20px ; ">Calcular</button>
+    <input  placeholder="Ingresa algo"  id="apocono">
+    <p></p>
+    <h1>Key events: presiona cualquier tecla</h1>
+
+    <script>
+        const masa = document.querySelector('#masa')
+        const altura = document.querySelector('#altura')
+        const boton = document.querySelector('button')
+        const botonAñadir = document.querySelector('#apocono')
+        const p = document.querySelector('p')
+
+        //Blur para campo requerido
+        botonAñadir.addEventListener('blur', (e) => {
+            p.textContent = 'Campo es requerido'
+            p.style.color = 'red'
+        })
+
+        let bmi
+        boton.addEventListener('click',() => {
+            bmi = Math.round( masa.value / altura.value ** 2)
+            alert(bmi)
+            console.log(bmi)
+        })
+
+        document.body.addEventListener('keypress', e => {
+            alert(e.keyCode)
+        })
+    </script>
+</body>
+</html>
